@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  </head>
+  <body>
+ <body class="bg-gray">
+    <div class="row">
+      <div class="col-12">
+        <%= render "shared/nav" %>
+      </div>
+      <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <% if alert || notice %>
+                <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+                  <%= notice %><%= alert %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <% end %>
+              <%= yield %>
+            </div>
+          </div>
+    </div>
+  </body>
+</html>
+
+

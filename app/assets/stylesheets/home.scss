@@ -1,0 +1,78 @@
+@import "bootstrap";
+
+html,body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  background: #393e46;
+  color: #cbf1f5;
+  height: auto;
+}
+
+h1,h2 {
+  font-weight: 200;
+  margin: 0.4em 0;
+}
+h1 { font-size: 3.5em; }
+h2 {
+  color: #a6e3e9;
+  font-size: 1em;
+}
+
+#app {
+  height: 100%;
+  padding-top: 0px;
+  text-align: center;
+}
+
+#app .button {
+  margin-bottom: 20px;
+}
+
+#app .tweet {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+#app .box {
+  margin-bottom: 0;
+  border-radius: 0;
+  background: #303841;
+  color: #a6e3e9;
+}
+
+#app .content small {
+  color: #71c9ce;
+}
+
+#app img {
+  border-radius: 30px;
+}
+
+#app .level-item {
+  padding-left: 10px;
+  color: #71c9ce;
+}
+
+#app input:focus {
+  border-color: #71c9ce;
+}
+
+#app .likes {
+  padding: 0 7.5px;
+}
+
+#app input {
+  font-weight: bold;
+}
+
+#app .tweets-move {
+  transition: transform 1s;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

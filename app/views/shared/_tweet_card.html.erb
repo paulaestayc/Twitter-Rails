@@ -1,0 +1,51 @@
+<div class="tweet">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+            <%= image_tag (tweet.user.photo_url)%>
+            <% if user_signed_in? && current_user != tweet.user%>
+            <%=link_to (current_user.is_following?(tweet.user) ? '<i class="fas fa-user-friends text-info "></i>' : '<i class="fas fa-user-plus text-success "></i>').html_safe,users_follow_path(tweet.user.id), class:"follow-btn",
+            'title' => (current_user.is_following?(tweet.user) ? "Dejar de seguir" : "Seguir"),
+            'data-toggle' => 'tooltip',
+            'data-placement' => 'right',
+            method: :post
+            %>
+            <%end%>
+            </figure>
+          </div>
+  <div class="media-content">
+            <div class="content">
+              <p>
+                <i class="fab fa-twitter"></i>
+                <b><%= tweet.user.username.upcase %></b>
+                <small>@<%= tweet.user.username%></small> ·
+                <small><%= link_to '<i class="far fa-clock" aria-hidden="true"></i> '.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet %></small>
+                <% if tweet.is_retweet? %> ·
+                <small><%= link_to "Retweet por @#{tweet.tweet_ref.user.username}", tweet.tweet_ref%></small>
+                <% end %>
+                <br>
+                <%= tweet.content.html_safe %>
+              </p>
+            </div>
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small">
+                  <% if tweet.is_liked?(current_user)%>
+                  <%=link_to '<i class="fas fa-heart text-danger"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
+                  <% else %>
+                  <%=link_to '<i class="far fa-heart text-danger"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>          
+                  <% end %>
+                  </span>
+                   <span class="likes"><%= tweet.likes.count %></span>
+                  <span class="icon is-small">
+                  | <%= link_to ('<i class="fas fa-retweet '+tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(tweet), method: :post%>
+                  </span>
+                  <span class="likes">
+                  <%= tweet.count_rt%></span>
+                </a>
+              </div>
+          </div>
+        </article>
+      </div>
+</div> 

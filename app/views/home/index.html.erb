@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.6/css/all.css'>
+</head>
+<body>
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+<div id="app" class="columns">
+    <div class="column">
+    <% if user_signed_in? %>
+    <%= render 'tweets/form', tweet: @tweet %>
+    <% end %>
+    <br/>
+    <% @tweets.each do |tweet| %>
+    <%= render "shared/tweet_card", tweet: tweet %>
+    <% end %>
+    <br/>
+    <div class="row mt-2 float-right">
+      <%= paginate @tweets %>
+  </div> 
+  </div> 
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js'></script>
+</body>
+</html>
